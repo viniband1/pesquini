@@ -2,6 +2,10 @@ class State < ActiveRecord::Base
   has_many :sanctions
   validates_uniqueness_of :abbreviation
 
+  def id
+    self.id
+  end
+
   def refresh!
     s = State.find_by_abbreviation(self.abbreviation)
     self.attributes.each do |attr_name, attr_value|
